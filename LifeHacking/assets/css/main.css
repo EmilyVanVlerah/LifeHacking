@@ -1,0 +1,247 @@
+/**
+ * Name: Emily Van Vlerah
+ * Assignment: Week 2 - Project Version 1 (Minimum 2 Features)
+ * Date: May 13th, 2015
+ */
+
+body{
+    background: linear-gradient(to bottom, #122759 9%,#5b8dbf 24%,#eeeade 36%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1, h2, h3,  p{
+    color: #000;
+}
+h1{
+    font-size: 20pt;
+}
+h2{
+    font-size: 18pt;
+}
+p{
+    font-size: 13pt;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px 0 15px;
+}
+header{
+    margin: 0 auto;
+    padding: 10px;
+}
+.body{
+    color: #eeeade;
+}
+.row img{
+    height: 200px;
+    padding: 10px;
+}
+.content{
+    padding-left: 30px;
+    margin: 20px;
+}
+footer .col-md-3 img{
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+}
+.profile img{
+    height: 150px;
+    width: 160px;
+    padding: 10px;
+}
+footer{
+    background: #122759;
+    width: inherit;
+    margin: 0 auto;
+    padding: 15px;
+    color: #eeeade;
+
+}
+footer .col-md-8 p{
+    color: #eeeade;
+}
+
+/*----------------------------------*/
+
+.col-md-6{
+    padding: 20px;
+}
+
+
+/*----------------------------------*/
+
+input[type="text"]{
+    width: 140px;
+    height: 30px;
+    border: 1px solid #a7ddf2;
+    padding: 2px;}
+input[type="text"]:hover{
+    background-color: #FFFFFF;
+    border: 1px solid #666464;}
+input[type="text"]:focus{
+    background-color: #FFFFFF;;
+    border: 1px solid #666464;}
+textarea{
+    border: 1px solid #a7ddf2;
+    padding: 2px;}
+textarea:hover{
+    background-color: #FFFFFF;
+    border: 1px solid #666464;}
+textarea:focus{
+    background-color: #FFFFFF;;
+    border: 1px solid #666464;}
+input[type="password"]{
+    width: 140px;
+    height: 30px;
+    border: 1px solid #a7ddf2;
+    padding: 2px;}
+input[type="password"]:hover{
+    background-color: #FFFFFF;;
+    border: 1px solid #666464;}
+input[type="password"]:focus{
+    background-color: #FFFFFF;;
+    border: 1px solid #666464;}
+
+input[type="login"] {
+    align: center;
+    font-size: 10pt;
+    border: 1px solid #EAAD59;
+    background-color: #ff6a20;
+    width: 100px;
+    color: #000;
+    padding: 5px;
+    margin: 10px 50px 10px 10px }
+input[type="login"]:hover {
+    cursor: pointer;
+    background-color: #c6612f;}
+
+button {
+    align: center;
+    font-size: 10pt;
+    border: 1px solid #EAAD59;
+    background-color: #ff6a20;
+    width: 70px;
+    color: #000;
+    padding: 5px;
+    margin: 10px 50px 10px 10px }
+button:hover {
+    cursor: pointer;
+    background-color: #c6612f;}
+
+input[type="submit"] {
+    align: center;
+    font-size: 10pt;
+    border: 1px solid #EAAD59;
+    background-color: #ff6a20;
+    width: 100px;
+    color: #000;
+    padding: 5px;
+    margin: 10px 50px 10px 10px }
+input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #c6612f;}
+
+/*--------------------------------------*/
+
+#posts{
+    margin: 20px;
+    padding: 10px;
+}
+
+input[type="edit"] {
+    text-align: center;
+    font-size: 10pt;
+    border: 1px solid #EAAD59;
+    background-color: #ff6a20;;
+    width: 80px;
+    color: #000;
+    padding: 5px;
+    margin: 10px 50px 10px 10px }
+input[type="edit"]:hover {
+    cursor: pointer;
+    background-color: #c6612f;}
+
+/*----------------------------------------*/
+
+footer .col-md-3 ul li a{
+    color: #eeeade;
+    text-decoration: none;
+}
+footer .col-md-3 ul li a:hover{
+    color: #ff6a20;
+    text-decoration: none;
+}
+
+footer .col-md-3 ul li {
+    list-style: none;
+}
+header li {
+    list-style: none;
+    position: absolute;
+    top: 10px;
+    right: 200px;
+}
+header li a{
+    list-style: none;
+    color: #eeeade;
+    text-decoration: none;
+}
+header li a:hover{
+    list-style: none;
+    color: #ff6a20;
+    text-decoration: none;
+}
+header li a:active{
+    list-style: none;
+    color: #ff6a20;
+    text-decoration: none;
+}
+
+.row .profile .col-md-6 a:hover{
+    list-style: none;
+}
+
+/*----------------------------------------*/
+
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+    padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+    top: 0;
+    bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+    padding: 0;
+}
+
+.image-popup-no-margins img{
+    height: 150px;
+    width: 160px;
+    padding: 10px;
+}
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+		opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+		opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+	opacity: 0;
+}
