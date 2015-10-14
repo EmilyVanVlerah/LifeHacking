@@ -219,8 +219,8 @@ header li a:active{
 }
 
 .image-popup-no-margins img{
-    height: 150px;
-    width: 160px;
+    height: 100px;
+    width: 100px;
     padding: 10px;
 }
 

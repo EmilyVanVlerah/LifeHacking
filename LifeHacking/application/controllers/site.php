@@ -2,6 +2,13 @@
 
 class Site extends CI_Controller {
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('blog_model');
+        $this->load->helper(array('form', 'url'));
+
+    }
 
     public function index()//homepage
     {
@@ -33,14 +40,39 @@ class Site extends CI_Controller {
         $this->load->view('view_logsign');
     }
 
-    public function allhacks()//login page
+    public function add_hacks()
     {
-        $this->load->view('view_allhacks');
+        /*$data['entries'] = $this->model_function->get_posts(40, 0);*/
+
+        //this function will retrive all entry in the database
+        $data['query'] = $this->blog_model->get_all_posts();
+        $this->load->view('view_addhacks',$data);
     }
 
-    public function addhacks()//login page
-    {
-        $this->load->view('view_addhacks');
+    public function hack_insert(){
+        $this->load->helper('form');
+        $this->load->library(array('form_validation','session'));
+
+        //set validation rules
+        $this->form_validation->set_rules('entry_title', 'Title', 'required|xss_clean|max_length[200]');
+        $this->form_validation->set_rules('entry_body', 'Body', 'required|xss_clean');
+        $this->form_validation->set_rules('entry_date', 'Date', 'required|xss_clean|max_length[200]');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            //if not valid
+            $this->load->view('view_addhacks');
+        }
+        else
+        {
+            //if valid
+            $title = $this->input->post('entry_title');
+            $body = $this->input->post('entry_body');
+            $date = $this->input->post('entry_date');
+            $this->blog_model->add_new_entry($title,$body,$date);
+            $this->session->set_flashdata('message', '1 new entry added!');
+            redirect('site/add_hacks');
+        }
     }
 
     public function selectedhack()//login page

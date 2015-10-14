@@ -20,7 +20,7 @@
         </div>
         <div id='cssmenu'>
             <ul>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/allhacks'><span>Hacks</span></a></li>
+                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/all_hacks'><span>Hacks</span></a></li>
                 <li class='active has-sub'><a href='#'><span>User Content</span></a>
                     <ul>
                         <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/profile'><span>Profile</span></a></li>

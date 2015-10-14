@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>Life Hacking</title>
@@ -44,43 +45,45 @@
     <br><br><br>
     <!--body-->
     <div class="content">
-        <h3>Add Hacks:</h3>
-        <div>
-            <p>Title:</p>
-            <input type="text" name="fname " value="" required /><br><br>
-            <p>Body:</p>
-            <textarea id="resizable" rows="5" cols="60"></textarea><br><br>
-            <p>Author:</p>
-            <input type="text" name="fname " value="" required /><br><br>
-            <p>Date:</p>
-            <input type="text" name="fname " value="" required /><br><br>
-            <input type="submit" name="submit" value="Submit" />
+        <div id="posts">
+
+            <h2>Add Hacks</h2><br>
+            <?php echo validation_errors(); ?>
+            <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
+            <?php echo form_open('site/hack_insert');?>
+            <p>Title:<br />
+                <input type="text" name="entry_title" />
+            </p>
+            <p>Body:<br />
+                <textarea name="entry_body" rows="5" cols="50" style="resize:none;"></textarea>
+            </p>
+            <p>Date:<br />
+                <input type="text" name="entry_date" />
+            </p>
+            <br/>
+            <input type="submit" value="Submit" />
+            </form>
+            <?php echo form_close();?>
         </div>
-        <br>
-        <hr>
-        <br>
-        <h2>All Hacks:</h2>
-        <br>
-        <div>
-            <h3>Hack Title</h3>
-            <p>Author: Here</p>
-            <p>Date: Here</p>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div>
-            <h3>Hack Title</h3>
-            <p>Author: Here</p>
-            <p>Date: Here</p>
-        </div>
-        <br>
+
+
         <hr>
         <br>
         <div>
-            <h3>Hack Title</h3>
-            <p>Author: Here</p>
-            <p>Date: Here</p>
+
+            <h2><u>All Hacks</u></h2>
+            <br>
+            <?php if($query):foreach($query as $post):?>
+                <h4><?php echo $post->entry_title;?></h4>
+                <p></p><?php echo $post->entry_body;?></p>
+                <h5><?php echo $post->entry_date;?></h5>
+                <img src="<?php echo base_url(); ?>assets/img/bm-unclick.png" alt="bookmark">
+                <br><hr><br>
+                <?php endforeach; else:?>
+                    <h4>No entry yet!</h4>
+                <?php endif;?>
+
+
         </div>
     </div>
     <br><br><br>
@@ -111,13 +114,6 @@
         <p>Copyright &copy; 2015 | Life Hacking | All rights reserved.</p>
     </footer>
 </div>
-</div>
 
 </body>
-</html><?php
-/**
- * Created by PhpStorm.
- * User: emilyvanvlerah
- * Date: 9/29/15
- * Time: 3:17 PM
- */
+</html>
