@@ -20,6 +20,11 @@ class Site extends CI_Controller {
         $this->load->view('view_homepage');
     }
 
+    public function homeuser()
+    {
+        $this->load->view('view_homeuser');
+    }
+
     public function about()//login page
     {
         $this->load->view('view_about');
@@ -38,6 +43,73 @@ class Site extends CI_Controller {
     public function logsign()//login page
     {
         $this->load->view('view_logsign');
+    }
+
+    public function user_login() {
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+
+        if ($this->form_validation->run() == FALSE) {
+            if(isset($this->session->userdata['logged_in'])){
+                $this->load->view('site/userhome');
+            }else{
+                $this->load->view('site/logsign');
+            }
+        } else {
+            $data = array(
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password')
+            );
+            $result = $this->blog_model->login($data);
+            if ($result == TRUE) {
+
+                $username = $this->input->post('username');
+                $result = $this->login_database->read_user_information($username);
+                if ($result != false) {
+                    $session_data = array(
+                        'username' => $result[0]->user_name,
+                        'email' => $result[0]->user_email,
+                    );
+                    // Add user data in session
+                    $this->session->set_userdata('logged_in', $session_data);
+                    $this->load->view('view_homeuser');
+                }
+            } else {
+                $data = array(
+                    'error_message' => 'Invalid Username or Password'
+                );
+                $this->load->view('view_homeuser', $data);
+            }
+        }
+    }
+
+    public function logout() {
+        $data = ['id_user', 'username'];
+        $this->session->unset_userdata($data);
+
+        redirect('site/homepage');
+    }
+
+
+    public function register()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<span class="error">', '</span>');
+        $this->form_validation->set_rules('username', 'username', 'required|min_length[3]|max_length[12]|trim');
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[2]|md5');
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email|trim');
+        if(!$this->form_validation->run())
+        {
+            $this->load->view('view_logsign');
+        }
+        else
+        {
+            $this->blog_model->register_user();
+            $this->load->view('view_homepage');
+        }
     }
 
     public function add_hacks()

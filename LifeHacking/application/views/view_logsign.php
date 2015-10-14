@@ -16,11 +16,11 @@
     <!-- Head/Nav -->
     <header class="row">
         <div>
-            <li class='has-sub'><a href='#'><span>Log In | Sign Up</span></a></li>
+            <li class='has-sub'><a href='#'><span>Log In</span></a> | <a href='#'><span>Sign Up</span></a></li>
         </div>
         <div id='cssmenu'>
             <ul>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/all_hacks'><span>Hacks</span></a></li>
+                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/addhacks'><span>Hacks</span></a></li>
                 <li class='active has-sub'><a href='#'><span>User Content</span></a>
                     <ul>
                         <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/profile'><span>Profile</span></a></li>
@@ -44,65 +44,47 @@
     <!--body-->
     <div class="row">
         <div class="col-md-6 col-xs-6">
-            <h3>Log In</h3>
-            <br>
-            <?php
-
-            echo form_open('index.php/site/login_validation');
-
-            echo validation_errors();
-
-            echo "<p>Email: ";
-            echo form_input('email', $this->input->post('email'));
-            echo "</p>";
-
-            echo "<p>Password: ";
-            echo form_password('password');
-            echo "</p>";
-
-            echo "<br>";
-            echo "<p>";
-            echo form_submit('login_submit', 'Log In');
-            echo "</p>";
-
-            echo form_close();
-
-            ?>
+            <a name="login"><div id="login"></a>
+                    <h2>Login Form</h2>
+                    <hr/>
+                    <?php echo form_open('site/user_login'); ?>
+                    <?php
+                    echo "<div class='error_msg'>";
+                    if (isset($error_message)) {
+                        echo $error_message;
+                    }
+                    echo validation_errors();
+                    echo "</div>";
+                    ?>
+                    <label>UserName:</label>
+                    <input type="text" name="username" id="name" placeholder="username"/><br /><br />
+                    <label>Password:</label>
+                    <input type="password" name="password" id="password" placeholder="**********"/><br/><br />
+                    <input type="submit" value=" Login " name="submit"/><br />
+                    <?php echo form_close(); ?>
+                </div>
         </div>
         <div class="col-md-6 col-xs-6">
-            <h3>Register</h3>
+            <a name="register"><h3>Register</h3></a>
             <br>
-            <?php
-
-            $attributes = array('class' => 'email', 'id' => 'myform');
-            echo form_open('index.php/site/signup_validation', $attributes);
-
-            echo validation_errors();
-
-            echo "<p>User Name: ";
-            echo form_input('username');
-            echo "<p>";
-
-            echo "<p>Email: ";
-            echo form_input('email', $this->input->post('email'));
-            echo "<p>";
-
-            echo "<p>Password: ";
-            echo form_password('password');
-            echo "<p>";
-
-            echo "<p>Confirm Password: ";
-            echo form_password('cpassword');
-            echo "<p>";
-
-            echo "<br>";
-            echo "<p>";
-            echo form_submit('signup_submit', 'Sign Up');
-            echo "<p>";
-
-            echo form_close();
-
-            ?>
+            <?php $this->load->helper('form'); ?>
+            <?php echo form_open('site/register'); ?>
+            <ul id="register">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" placeholder="username" value="<?php echo set_value('username'); ?>" />
+                        <?php echo form_error('username'); ?>
+                <br><br>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" placeholder="6-8 characters" />
+                        <?php echo form_error('password'); ?>
+                <br><br>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" placeholder="example@email.com" value="<?php echo set_value('email'); ?>" />
+                        <?php echo form_error('email'); ?>
+                <br><br>
+                        <input type="submit" value="Register" />
+            </ul>
+            <?php echo form_close(); ?>
         </div>
     </div>
     <br><br><br>
@@ -116,8 +98,7 @@
             <div class="col-md-3 col-xs-6">
                 <ul>
                     <li><a href='<?php echo base_url(); ?>index.php/site'><span>Home</span></a></li>
-                    <li><a href='<?php echo base_url(); ?>index.php/site/profile'>Your Profile</a></li>
-                    <li><a href='<?php echo base_url(); ?>index.php/site/bookmark'>Bookmarked Hacks</a></li>
+                    <li><a href='<?php echo base_url(); ?>index.php/site/addhacks'>Hacks</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-xs-6">

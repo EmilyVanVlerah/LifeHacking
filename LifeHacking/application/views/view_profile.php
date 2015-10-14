@@ -16,7 +16,7 @@
     <!-- Head/Nav -->
     <header class="row">
         <div>
-            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign'><span>Log In | Sign Up</span></a></li>
+            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign#login'><span>Log In</span></a> | <a href='<?php echo base_url(); ?>index.php/site/logsign#register'><span>Sign Up</span></a></li>
         </div>
         <div id='cssmenu'>
             <ul>
@@ -87,8 +87,7 @@
             <div class="col-md-3 col-xs-6">
                 <ul>
                     <li><a href='<?php echo base_url(); ?>index.php/site'>Home</a></li>
-                    <li><a href='#'>Your Profile</a></li>
-                    <li><a href='<?php echo base_url(); ?>index.php/site/bookmark'>Bookmarked Hacks</a></li>
+                    <li><a href='<?php echo base_url(); ?>index.php/site/addhacks'>Hacks</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-xs-6">
