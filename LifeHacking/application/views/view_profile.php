@@ -16,11 +16,18 @@
     <!-- Head/Nav -->
     <header class="row">
         <div>
-            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign#login'><span>Log In</span></a> | <a href='<?php echo base_url(); ?>index.php/site/logsign#register'><span>Sign Up</span></a></li>
+            <ul>
+                <li class='has-sub'><?php
+
+                    echo "Welcome User";
+                    echo $user;
+                    echo "<br><br>";
+                    ?> </li>
+            </ul>
         </div>
         <div id='cssmenu'>
             <ul>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/all_hacks'><span>Hacks</span></a></li>
+                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/add_hacks'><span>Hacks</span></a></li>
                 <li class='active has-sub'><a href='#'><span>User Content</span></a>
                     <ul>
                         <li class='has-sub'><a href='#'><span>Profile</span></a></li>
@@ -46,48 +53,33 @@
     <div class="row">
         <div class="profile">
             <div class="col-md-6 col-xs-6">
-                <h3>Your Profile</h3>
-                <img src="<?php echo base_url(); ?>assets/img/placeholder.jpg" alt="bookmark">
-            </div>
-            <br><br><br>
-            <div class="col-md-6 col-xs-6">
+                <h3>Your Profile</h3><br>
                 <p>Name: Here</p>
                 <p>Username: Here</p>
                 <p>Password: ********</p>
                 <p>Email: Here@email.com</p>
-                <a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a>
+            </div>
+            <br><br><br>
+            <div class="col-md-6 col-xs-6">
                 <a href='<?php echo base_url(); ?>index.php/site/editprofile'><button type="button">Edit</button></a>
-
+                <br><br>
+                <a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a>
             </div>
         </div>
 
-    </div>
-    <br>
-    <hr>
-    <br>
-    <div class="row">
-        <div class="col-md-8 col-xs-6">
-            <h3>About You</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vehicula sagittis lectus,
-                eu rutrum felis ultricies in. Curabitur laoreet elementum lectus non imperdiet. Vestibulum
-                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris fermentum
-                euismod tellus ac vulputate. Donec porta leo sed lorem tristique venenatis. Sed ut faucibus dui,
-                sit amet convallis nisi. Ut imperdiet dignissim augue, vitae blandit velit sodales at. Mauris auctor
-                nisl et euismod auctor. Suspendisse hendrerit diam sed turpis accumsan porta.</p>
-        </div>
     </div>
     <br><br><br>
     <footer class="row">
         <div class="row">
             <div class="col-md-3 col-xs-6">
-                <img src="<?php echo base_url(); ?>assets/img/facebook.png" alt="bookmark">
+                <a href="https://www.facebook.com/Life-Hacking-516502108516139/"><img src="<?php echo base_url(); ?>assets/img/facebook.png" alt="bookmark"></a>
             </div>
             <div class="col-md-3 col-xs-6">
             </div>
             <div class="col-md-3 col-xs-6">
                 <ul>
                     <li><a href='<?php echo base_url(); ?>index.php/site'>Home</a></li>
-                    <li><a href='<?php echo base_url(); ?>index.php/site/addhacks'>Hacks</a></li>
+                    <li><a href='<?php echo base_url(); ?>index.php/site/add_hacks'>Hacks</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-xs-6">
@@ -100,7 +92,9 @@
             </div>
         </div>
         <br><br>
-        <p>Copyright &copy; 2015 | Life Hacking | All rights reserved.</p>
+        <div class="col-md-8 col-xs-6">
+            <p>Copyright &copy; 2015 | Life Hacking | All rights reserved.</p>
+        </div>
     </footer>
 </div>
 </div>

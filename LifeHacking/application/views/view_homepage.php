@@ -78,14 +78,14 @@
             <footer class="row">
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
-                        <img src="<?php echo base_url(); ?>assets/img/facebook.png" alt="bookmark">
+                        <a href="https://www.facebook.com/Life-Hacking-516502108516139/"><img src="<?php echo base_url(); ?>assets/img/facebook.png" alt="bookmark"></a>
                     </div>
                     <div class="col-md-3 col-xs-6">
                     </div>
                     <div class="col-md-3 col-xs-6">
                         <ul>
                             <li><a href='#'><span>Home</span></a></li>
-                            <li><a href='<?php echo base_url(); ?>index.php/site/addhacks'>Hacks</a></li>
+                            <li><a href='<?php echo base_url(); ?>index.php/site/add_hacks'>Hacks</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-xs-6">

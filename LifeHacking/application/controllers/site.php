@@ -54,7 +54,7 @@ class Site extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             if(isset($this->session->userdata['logged_in'])){
-                $this->load->view('site/userhome');
+                $this->load->view('site/profile');
             }else{
                 $this->load->view('site/logsign');
             }
@@ -75,13 +75,13 @@ class Site extends CI_Controller {
                     );
                     // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('view_homeuser');
+                    $this->load->view('view_profile');
                 }
             } else {
                 $data = array(
                     'error_message' => 'Invalid Username or Password'
                 );
-                $this->load->view('view_homeuser', $data);
+                $this->load->view('view_profile', $data);
             }
         }
     }
