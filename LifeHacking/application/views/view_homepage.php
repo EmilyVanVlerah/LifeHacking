@@ -60,12 +60,11 @@
                 </div>
                 <div class="col-md-6 col-xs-6">
                     <h3>Sign Up Benefits</h3>
-                    <p>If you would like to help contribute to the
-                        site and add hacks you know please feel
-                        free to sign up. There is no cost to signing
-                        up with Life Hacking. Signing up allows you
-                        to post hacks of your own and bookmark
-                        hacks you enjoy.
+                    <p>If you would like to know new news and upcoming
+                        changes to the site, signing up gets you these
+                        updates. We are new and much more to add to the
+                        site so why now hear about the cool things we
+                        are bringing to you?
                         <br><br>
                         For more Information
                         <br><br>

@@ -59,13 +59,13 @@
         <div class="col-md-6 col-xs-6">
             <h3>Sign Up Benefits</h3>
             <p>Signing up and being a member allows you
-                to add to our site. This means you can share
-                all hacks that you feel would help out the
-                community. You can also bookmark life
-                hacks that you like to come back to later.
-                This all comes at no cost. Click the button
-                below to sign up and become a member
-                today.
+                to see what new updates we will make to
+                the site. We will email with news of our
+                progress and of any new updates to the
+                site. Allowing you in depth inside info
+                about more things coming soon.Click the
+                button below to sign up and become a
+                member today.
                 <br><br>
                 <a href='<?php echo base_url(); ?>index.php/site/logsign'><button type="button">Sign Up!</button></p></a>
         </div>
