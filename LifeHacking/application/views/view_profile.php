@@ -20,10 +20,13 @@
                 <li class='has-sub'><?php
 
                     echo "Welcome User";
-                    echo $user;
                     echo "<br><br>";
                     ?> </li>
             </ul>
+        </div>
+        <br><br>
+        <div>
+            <li><a href="<?php echo base_url(); ?>index.php/site">Logout</a></li>
         </div>
         <div id='cssmenu'>
             <ul>
@@ -43,7 +46,7 @@
                 </li>
             </ul>
         </div>
-        <br><br><br><br><br>
+        <br><br><br>
         <div class="row">
             <a href='<?php echo base_url(); ?>'index.php/site'><img src="<?php echo base_url(); ?>assets/img/website-tagline.png" alt="Life Hacking Logo"></a>
         </div>
@@ -53,11 +56,28 @@
     <div class="row">
         <div class="profile">
             <div class="col-md-6 col-xs-6">
+                <table>
+                    <?php
+
+                    if(count($query) > 0) {
+
+                        foreach ($query->result() as $post) { ?>
+                        <tr>
+                            <td><?php echo $post->name;?></td>
+                            <td><?php echo $post->username;?></td>
+                            <td><?php echo $post->password;?></td>
+                            <td><?php echo $post->email;?></td>
+
+                        </tr>
+                    <?php } } else { echo 'Code Error!'; }?>
+                </table>
+
+                <!--
                 <h3>Your Profile</h3><br>
                 <p>Name: Here</p>
                 <p>Username: Here</p>
                 <p>Password: ********</p>
-                <p>Email: Here@email.com</p>
+                <p>Email: Here@email.com</p>-->
             </div>
             <br><br><br>
             <div class="col-md-6 col-xs-6">

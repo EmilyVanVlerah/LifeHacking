@@ -50,7 +50,7 @@
             <h2>Add Hacks</h2><br>
             <?php echo validation_errors(); ?>
             <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
-            <?php echo form_open('site/hack_insert');?>
+            <?php echo form_open('site/hack_insert', 'site/upload_file');?>
             <p>Title:<br />
                 <input type="text" name="entry_title" />
             </p>
@@ -60,10 +60,18 @@
             <p>Date:<br />
                 <input type="text" name="entry_date" />
             </p>
+            <p>Add Photo:</p>
+            <input type="file" name="entry_pic">
             <br/>
             <input type="submit" value="Submit" />
             </form>
             <?php echo form_close();?>
+
+
+            <!--<form action="</?php echo base_url('site/hack_insert'); ?>" method="post" enctype="multipart/form-data">
+                <p>Add Photo:</p>
+                <input type="file" name="entry_pic">
+            </form>-->
         </div>
 
 
@@ -73,15 +81,18 @@
 
             <h2><u>All Hacks</u></h2>
             <br>
-            <?php if($query):foreach($query as $post):?>
-                <h4><?php echo $post->entry_title;?></h4>
-                <p></p><?php echo $post->entry_body;?></p>
+            <?php foreach($this->blog_model->getPosts()as $post):?>
+                <h3><?php echo $post->entry_title;?></h3>
+                <p><?php echo $post->entry_body;?></p>
                 <h5><?php echo $post->entry_date;?></h5>
-                <img src="<?php echo base_url(); ?>assets/img/bm-unclick.png" alt="bookmark">
+                <img style="width: 150px;height: 150px;" src="<?php echo base_url('file/'.$post->entry_pic) ?>" >
+                <!--<div class="image-popup-no-margins">
+                        <a href="</?php echo $post->entry_pic;?>" data-source="http://500px.com/photo/32736307" title="Hack Photo" style="width:193px;height:125px;">
+                            <img src="</?php echo site_url("site/displayimage/$Id"); ?>" >
+                        </a>
+                    </div>-->
                 <br><hr><br>
-                <?php endforeach; else:?>
-                    <h4>No entry yet!</h4>
-                <?php endif;?>
+                <?php endforeach;?>
 
 
         </div>

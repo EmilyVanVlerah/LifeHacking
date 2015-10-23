@@ -98,6 +98,7 @@ class Site extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<span class="error">', '</span>');
+        $this->form_validation->set_rules('name', 'name', 'required|min_length[3]|max_length[12]|trim');
         $this->form_validation->set_rules('username', 'username', 'required|min_length[3]|max_length[12]|trim');
         $this->form_validation->set_rules('password', 'password', 'required|min_length[2]|md5');
         $this->form_validation->set_rules('email', 'email', 'required|valid_email|trim');
@@ -112,14 +113,15 @@ class Site extends CI_Controller {
         }
     }
 
-    public function add_hacks()
-    {
-        /*$data['entries'] = $this->model_function->get_posts(40, 0);*/
 
-        //this function will retrive all entry in the database
-        $data['query'] = $this->blog_model->get_all_posts();
-        $this->load->view('view_addhacks',$data);
-    }
+
+
+
+
+
+
+
+
 
     public function hack_insert(){
         $this->load->helper('form');
@@ -141,20 +143,77 @@ class Site extends CI_Controller {
             $title = $this->input->post('entry_title');
             $body = $this->input->post('entry_body');
             $date = $this->input->post('entry_date');
-            $this->blog_model->add_new_entry($title,$body,$date);
+            $photo = $this->input->post('entry_pic');
+            $this->blog_model->add_new_entry($title,$body,$date,$photo);
             $this->session->set_flashdata('message', '1 new entry added!');
             redirect('site/add_hacks');
         }
     }
 
-    public function selectedhack()//login page
-    {
-        $this->load->view('view_selectedhack');
+    public function upload_file() {
+
+        $status = "";
+        $msg = "";
+        $filename = 'entry_pic';
+
+        if(empty($_POST['title'])){
+            $status = "error";
+            $msg = "Please Enter Title";
+        }
+
+        if ($status != "error"){
+            $config['upload_path'] = APPPATH . 'file/';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['max_size'] = 1024 * 8;
+            $config['encrypt_name'] = true;
+
+            $this->load->library('upload', $config);
+
+            if(!$this->upload->do_upload($filename)){
+                $status = 'error';
+                $msg = $this->upload->display_errors('','');
+            }else{
+                $this->load->model('blog_model');
+                $data = $this->upload->data();
+                $file_id= $this->blog_model->insert_file($data['file_name']);
+                if($file_id){
+                    redirect('site/add_hacks');
+                }else{
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Please try again";
+                }
+            }
+
+            @unlink($_FILES[$filename]);
+        }
+
+        echo jason_encode(array('status'=>$status, 'msg'=>$msg));
     }
+
+    public function add_hacks()
+    {
+        /*$data['entries'] = $this->model_function->get_posts(40, 0);*/
+
+        //this function will retrive all entry in the database
+        $data['query1'] = $this->blog_model->getPosts();
+        $this->load->view('view_addhacks',$data);
+    }
+
+
+
+
+
 
     public function profile()//login page
     {
         $this->load->view('view_profile');
+    }
+
+    function user_profile()
+    {
+        $data['query'] = $this->blog_model->getProfile();
+        $this->load->view('view_profile', $data);
     }
 
     public function editprofile()//login page

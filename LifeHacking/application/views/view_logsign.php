@@ -47,7 +47,7 @@
         <div class="col-md-6 col-xs-6">
             <a name="login"><div id="login"></a>
                     <h2>Login</h2>
-                    <hr/>
+                    <br>
                     <?php echo form_open('site/user_login'); ?>
                     <?php
                     echo "<div class='error_msg'>";
@@ -71,6 +71,10 @@
             <?php $this->load->helper('form'); ?>
             <?php echo form_open('site/register'); ?>
             <ul id="register">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" placeholder="name" value="<?php echo set_value('name'); ?>" />
+                        <?php echo form_error('name'); ?>
+                <br><br>
                         <label for="username">Username:</label>
                         <input type="text" name="username" placeholder="username" value="<?php echo set_value('username'); ?>" />
                         <?php echo form_error('username'); ?>

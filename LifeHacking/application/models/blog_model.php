@@ -7,19 +7,31 @@ class Blog_model extends CI_Model
         $this->load->database();
     }
 
-    function get_all_posts()
+    function getPosts()
     {
         //get all entry
-        $query = $this->db->get('entries');
-        return $query->result();
+        $query1 = $this->db->get('entries');
+        return $query1->result();
+
+
     }
 
-    function add_new_entry($title,$body,$date)
+    public function insert_file($filename){
+        $data = array(
+          'entry_pic' => $filename
+        );
+
+        $this->db->insert('entries',$data);
+        return $this->db->insert_id();
+    }
+
+    function add_new_entry($title,$body,$date,$photo)
     {
         $data = array(
             'entry_title' => $title,
             'entry_body' => $body,
-            'entry_date' => $date
+            'entry_date' => $date,
+            'entry_pic' => $photo
         );
         $this->db->insert('entries',$data);
     }
@@ -27,6 +39,7 @@ class Blog_model extends CI_Model
 
     function register_user()
     {
+        $data['name'] = $this->input->post('name');
         $data['username'] = $this->input->post('username');
         $data['password'] = md5($this->input->post('password'));
         $data['email'] = ($this->input->post('email'));
@@ -74,6 +87,12 @@ class Blog_model extends CI_Model
         {
             $this->index();
         }
+    }
+
+    function getProfile(){
+        $this->db->select("name,username,password,email");
+        $query = $this->db->get('users');
+        return $query->result_array();
     }
 
 }
