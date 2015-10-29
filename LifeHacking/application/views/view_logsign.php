@@ -46,24 +46,24 @@
     <div class="row">
         <div class="col-md-6 col-xs-6">
             <a name="login"><div id="login"></a>
-                    <h2>Login</h2>
-                    <br>
-                    <?php echo form_open('site/user_login'); ?>
+                <h2>Login</h2>
+                <br>
+                <?php echo form_open('site/user_login'); ?>
                     <?php
-                    echo "<div class='error_msg'>";
-                    if (isset($error_message)) {
-                        echo $error_message;
-                    }
-                    echo validation_errors();
-                    echo "</div>";
+                        echo "<div class='error_msg'>";
+                        if (isset($error_message)) {
+                            echo $error_message;
+                        }
+                        echo validation_errors();
+                        echo "</div>";
                     ?>
                     <label>User Name:</label>
                     <input type="text" name="username" id="name" placeholder="username"/><br /><br />
                     <label>Password:</label>
                     <input type="password" name="password" id="password" placeholder="**********"/><br/><br />
                     <input type="submit" value=" Login " name="submit"/><br />
-                    <?php echo form_close(); ?>
-                </div>
+                <?php echo form_close(); ?>
+            </div>
         </div>
         <div class="col-md-6 col-xs-6">
             <a name="register"><h3>Register</h3></a>

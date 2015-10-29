@@ -20,10 +20,6 @@ class Site extends CI_Controller {
         $this->load->view('view_homepage');
     }
 
-    public function homeuser()
-    {
-        $this->load->view('view_homeuser');
-    }
 
     public function about()//login page
     {
@@ -67,7 +63,7 @@ class Site extends CI_Controller {
             if ($result == TRUE) {
 
                 $username = $this->input->post('username');
-                $result = $this->login_database->read_user_information($username);
+                $result = $this->blog_model->validate_user($username);
                 if ($result != false) {
                     $session_data = array(
                         'username' => $result[0]->user_name,
@@ -87,9 +83,7 @@ class Site extends CI_Controller {
     }
 
     public function logout() {
-        $data = ['id_user', 'username'];
-        $this->session->unset_userdata($data);
-
+        $this->session->sess_destroy();
         redirect('site/homepage');
     }
 
@@ -193,8 +187,6 @@ class Site extends CI_Controller {
 
     public function add_hacks()
     {
-        /*$data['entries'] = $this->model_function->get_posts(40, 0);*/
-
         //this function will retrive all entry in the database
         $data['query1'] = $this->blog_model->getPosts();
         $this->load->view('view_addhacks',$data);
@@ -213,7 +205,7 @@ class Site extends CI_Controller {
     function user_profile()
     {
         $data['query'] = $this->blog_model->getProfile();
-        $this->load->view('view_profile', $data);
+        $this->load->view('view_profile',$data);
     }
 
     public function editprofile()//login page
@@ -221,10 +213,7 @@ class Site extends CI_Controller {
         $this->load->view('view_editprofile');
     }
 
-    public function bookmark()//login page
-    {
-        $this->load->view('view_bookmark');
-    }
+
 }
 
 /* End of file welcome.php */

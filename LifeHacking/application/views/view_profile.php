@@ -1,3 +1,6 @@
+<?php
+$session_data = $this->session->userdata('logged_in');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +18,6 @@
 <div class="container">
     <!-- Head/Nav -->
     <header class="row">
-        <div>
-            <ul>
-                <li class='has-sub'><?php
-
-                    echo "Welcome User";
-                    echo "<br><br>";
-                    ?> </li>
-            </ul>
-        </div>
-        <br><br>
         <div>
             <li><a href="<?php echo base_url(); ?>index.php/site">Logout</a></li>
         </div>
@@ -56,34 +49,21 @@
     <div class="row">
         <div class="profile">
             <div class="col-md-6 col-xs-6">
-                <table>
-                    <?php
+                <h2>Your Profile</h2>
+                <br>
 
-                    if(count($query) > 0) {
+                <?php foreach($this->blog_model->getProfile()as $post):?>
+                    <h4>Name: <?php echo $post->name;?></h4>
+                    <h4>Username: <?php echo $post->username;?></h4>
+                    <h4>Password: ***********<h4>
+                    <h4>Email: <?php echo $post->email;?></h4>
+                    <br>
+                <?php endforeach;?>
 
-                        foreach ($query->result() as $post) { ?>
-                        <tr>
-                            <td><?php echo $post->name;?></td>
-                            <td><?php echo $post->username;?></td>
-                            <td><?php echo $post->password;?></td>
-                            <td><?php echo $post->email;?></td>
-
-                        </tr>
-                    <?php } } else { echo 'Code Error!'; }?>
-                </table>
-
-                <!--
-                <h3>Your Profile</h3><br>
-                <p>Name: Here</p>
-                <p>Username: Here</p>
-                <p>Password: ********</p>
-                <p>Email: Here@email.com</p>-->
             </div>
             <br><br><br>
             <div class="col-md-6 col-xs-6">
                 <a href='<?php echo base_url(); ?>index.php/site/editprofile'><button type="button">Edit</button></a>
-                <br><br>
-                <a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a>
             </div>
         </div>
 

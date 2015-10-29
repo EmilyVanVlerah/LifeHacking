@@ -7,15 +7,15 @@ class Blog_model extends CI_Model
         $this->load->database();
     }
 
+    //Add Hacks Get to display
     function getPosts()
     {
         //get all entry
         $query1 = $this->db->get('entries');
         return $query1->result();
-
-
     }
 
+    //Add Hacks Photo
     public function insert_file($filename){
         $data = array(
           'entry_pic' => $filename
@@ -25,6 +25,7 @@ class Blog_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    //Adding Hacks to db
     function add_new_entry($title,$body,$date,$photo)
     {
         $data = array(
@@ -36,7 +37,7 @@ class Blog_model extends CI_Model
         $this->db->insert('entries',$data);
     }
 
-
+    //adding user to db
     function register_user()
     {
         $data['name'] = $this->input->post('name');
@@ -46,6 +47,7 @@ class Blog_model extends CI_Model
         $this->db->insert('users', $data);
     }
 
+    //Getting users from db to login
     public function login($data) {
 
         $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
@@ -62,37 +64,15 @@ class Blog_model extends CI_Model
         }
     }
 
-    function verifyUser(){
-        //getting parameters from view
-        $data = array(
-            'username' => $this->input->post('username'),
-            'password' => $this->input->post('password')
-        );
 
-        $this->load->model('loginModel');
-        $query = $this->loginModel->validate($data);
-
-        if ($query){
-            //if the user c validated
-            //data variable is created becx we want to put username in session
-            $data = array(
-                'username' => $this->input->post('username'),
-                'is_logged_in' => true
-            );
-
-            $this->session->set_userdata($data);
-            redirect('sessionController/dashboard_area');
-        }
-        else
-        {
-            $this->index();
-        }
-    }
-
-    function getProfile(){
-        $this->db->select("name,username,password,email");
+    //getting users from db to display
+    function getProfile()
+    {
+        //get all entry
         $query = $this->db->get('users');
-        return $query->result_array();
+        return $query->result();
+
+
     }
 
 }
