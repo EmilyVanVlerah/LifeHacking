@@ -15,19 +15,15 @@
 <div class="container">
     <!-- Head/Nav -->
     <header class="row">
-        <div>
-            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign#login'><span>Log In</span></a> | <a href='<?php echo base_url(); ?>index.php/site/logsign#register'><span>Sign Up</span></a></li>
-        </div>
         <div id='cssmenu'>
             <ul>
                 <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/add_hacks'><span>Hacks</span></a></li>
-                <li class='active has-sub'><a href='#'><span>User Content</span></a>
+                <li class='has-sub'><a href='#'><span>User Content</span></a>
                     <ul>
-                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/profile'><span>Profile</span></a></li>
-                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a></li>
+                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
+                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/sign'><span>Newsletter</span></a></li>
                     </ul>
                 </li>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
                 <li class='active has-sub'><a href='#'><span>Contact Us</span></a>
                     <ul>
                         <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/contact'><span>Contact Info</span></a></li>
@@ -36,7 +32,7 @@
                 </li>
             </ul>
         </div>
-        <br><br><br><br><br>
+        <br><br><br>
         <div class="row">
             <a href='<?php echo base_url(); ?>'index.php/site'><img src="<?php echo base_url(); ?>assets/img/website-tagline.png" alt="Life Hacking Logo"></a>
         </div>
@@ -44,24 +40,34 @@
     <br><br><br>
     <!--body-->
     <div class="row">
-        <div class="profile">
-            <div class="col-md-6 col-xs-6">
-                <h3>Your Profile</h3>
-            </div>
-            <br><br>
-            <div class="col-md-6 col-xs-6">
-                <p>Name:
-                <input type="text" name="fname " value="" required /></p><br>
-                <p>Username:
-                <input type="text" name="fname " value="" required /></p><br>
-                <p>Password:
-                <input type="text" name="fname " value="" required /></p><br>
-                <p>Email:
-                <input type="text" name="fname " value="" required /></p><br>
-
-                <input type="submit" name="submit" value="Submit" />
-            </div>
+        <div class="col-md-5 col-xs-6">
+            <h3>Welcome to Sign Up!</h3>
+            <p>Signing up for a newsletter allows you
+                to see what new updates we will make to
+                the site. We will email with news of our
+                progress and of any new updates to the
+                site. Allowing you in depth inside info
+                about more things coming soon. Click the
+                button below to sign up for your newsletter
+                today.
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <a name="register"><h3>Register</h3></a>
             <br>
+            <?php $this->load->helper('form'); ?>
+            <?php echo form_open('site/register'); ?>
+            <ul id="register">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" placeholder="name" value="<?php echo set_value('name'); ?>" />
+                        <?php echo form_error('name'); ?>
+                <br><br>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" placeholder="example@email.com" value="<?php echo set_value('email'); ?>" />
+                        <?php echo form_error('email'); ?>
+                <br><br>
+                        <input type="submit" value="Register" />
+            </ul>
+            <?php echo form_close(); ?>
         </div>
     </div>
     <br><br><br>

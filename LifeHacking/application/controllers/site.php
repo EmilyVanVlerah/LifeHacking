@@ -20,7 +20,6 @@ class Site extends CI_Controller {
         $this->load->view('view_homepage');
     }
 
-
     public function about()//login page
     {
         $this->load->view('view_about');
@@ -36,57 +35,13 @@ class Site extends CI_Controller {
         $this->load->view('view_job');
     }
 
-    public function logsign()//login page
+
+
+
+    public function sign()//login page
     {
-        $this->load->view('view_logsign');
+        $this->load->view('view_sign');
     }
-
-    public function user_login() {
-
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
-        if ($this->form_validation->run() == FALSE) {
-            if(isset($this->session->userdata['logged_in'])){
-                $this->load->view('site/profile');
-            }else{
-                $this->load->view('site/logsign');
-            }
-        } else {
-            $data = array(
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password')
-            );
-            $result = $this->blog_model->login($data);
-            if ($result == TRUE) {
-
-                $username = $this->input->post('username');
-                $result = $this->blog_model->validate_user($username);
-                if ($result != false) {
-                    $session_data = array(
-                        'username' => $result[0]->user_name,
-                        'email' => $result[0]->user_email,
-                    );
-                    // Add user data in session
-                    $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('view_profile');
-                }
-            } else {
-                $data = array(
-                    'error_message' => 'Invalid Username or Password'
-                );
-                $this->load->view('view_profile', $data);
-            }
-        }
-    }
-
-    public function logout() {
-        $this->session->sess_destroy();
-        redirect('site/homepage');
-    }
-
 
     public function register()
     {
@@ -106,14 +61,6 @@ class Site extends CI_Controller {
             $this->load->view('view_homepage');
         }
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -191,28 +138,6 @@ class Site extends CI_Controller {
         $data['query1'] = $this->blog_model->getPosts();
         $this->load->view('view_addhacks',$data);
     }
-
-
-
-
-
-
-    public function profile()//login page
-    {
-        $this->load->view('view_profile');
-    }
-
-    function user_profile()
-    {
-        $data['query'] = $this->blog_model->getProfile();
-        $this->load->view('view_profile',$data);
-    }
-
-    public function editprofile()//login page
-    {
-        $this->load->view('view_editprofile');
-    }
-
 
 }
 

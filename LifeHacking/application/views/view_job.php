@@ -15,23 +15,19 @@
 <div class="container">
     <!-- Head/Nav -->
     <header class="row">
-        <div>
-            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign#login'><span>Log In</span></a> | <a href='<?php echo base_url(); ?>index.php/site/logsign#register'><span>Sign Up</span></a></li>
-        </div>
         <div id='cssmenu'>
             <ul>
                 <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/add_hacks'><span>Hacks</span></a></li>
-                <li class='active has-sub'><a href='#'><span>User Content</span></a>
+                <li class='has-sub'><a href='#'><span>User Content</span></a>
                     <ul>
-                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/profile'><span>Profile</span></a></li>
-                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a></li>
+                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
+                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/sign'><span>Newsletter</span></a></li>
                     </ul>
                 </li>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
                 <li class='active has-sub'><a href='#'><span>Contact Us</span></a>
                     <ul>
                         <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/contact'><span>Contact Info</span></a></li>
-                        <li class='has-sub'><a href='#'><span>Job Opportunities</span></a></li>
+                        <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/job'><span>Job Opportunities</span></a></li>
                     </ul>
                 </li>
             </ul>

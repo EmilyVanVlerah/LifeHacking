@@ -15,19 +15,15 @@
 <div class="container">
         <!-- Head/Nav -->
         <header class="row">
-            <div>
-                <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/logsign#login'><span>Log In</span></a> | <a href='<?php echo base_url(); ?>index.php/site/logsign#register'><span>Sign Up</span></a></li>
-            </div>
             <div id='cssmenu'>
                 <ul>
                     <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/add_hacks'><span>Hacks</span></a></li>
-                    <li class='active has-sub'><a href='#'><span>User Content</span></a>
+                    <li class='has-sub'><a href='#'><span>User Content</span></a>
                         <ul>
-                            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/profile'><span>Profile</span></a></li>
-                            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/bookmark'><span>Bookmarked Hacks</span></a></li>
+                            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
+                            <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/sign'><span>Newsletter</span></a></li>
                         </ul>
                     </li>
-                    <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/about'><span>About Us</span></a></li>
                     <li class='active has-sub'><a href='#'><span>Contact Us</span></a>
                         <ul>
                             <li class='has-sub'><a href='<?php echo base_url(); ?>index.php/site/contact'><span>Contact Info</span></a></li>
@@ -62,13 +58,13 @@
                     <h3>Sign Up Benefits</h3>
                     <p>If you would like to know new news and upcoming
                         changes to the site, signing up gets you these
-                        updates. We are new and much more to add to the
-                        site so why now hear about the cool things we
+                        updates. We are new and have much more to add to the
+                        site so why not hear about the cool things we
                         are bringing to you?
                         <br><br>
                         For more Information
                         <br><br>
-                        Click the About Us tab.</p>
+                        Hover over the User Content tab for About Us or Newsletter links.</p>
                 </div>
             </div>
         </div>

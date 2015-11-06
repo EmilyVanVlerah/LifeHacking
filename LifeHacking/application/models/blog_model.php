@@ -7,6 +7,9 @@ class Blog_model extends CI_Model
         $this->load->database();
     }
 
+
+
+
     //Add Hacks Get to display
     function getPosts()
     {
@@ -37,6 +40,8 @@ class Blog_model extends CI_Model
         $this->db->insert('entries',$data);
     }
 
+
+
     //adding user to db
     function register_user()
     {
@@ -47,33 +52,6 @@ class Blog_model extends CI_Model
         $this->db->insert('users', $data);
     }
 
-    //Getting users from db to login
-    public function login($data) {
-
-        $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
-        $this->db->select('*');
-        $this->db->from('users');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
-
-        if ($query->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    //getting users from db to display
-    function getProfile()
-    {
-        //get all entry
-        $query = $this->db->get('users');
-        return $query->result();
-
-
-    }
 
 }
 
