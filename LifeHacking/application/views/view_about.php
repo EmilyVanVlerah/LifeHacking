@@ -63,7 +63,7 @@
                 button below to sign up for your newsletter
                 today.
                 <br><br>
-                <a href='<?php echo base_url(); ?>index.php/site/logsign'><button type="button">Sign Up!</button></p></a>
+                <a href='<?php echo base_url(); ?>index.php/site/sign'><button type="button">Sign Up!</button></p></a>
         </div>
     </div>
     <br><br><br>

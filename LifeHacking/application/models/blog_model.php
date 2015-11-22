@@ -45,11 +45,19 @@ class Blog_model extends CI_Model
     //adding user to db
     function register_user()
     {
-        $data['name'] = $this->input->post('name');
-        $data['username'] = $this->input->post('username');
-        $data['password'] = md5($this->input->post('password'));
-        $data['email'] = ($this->input->post('email'));
-        $this->db->insert('users', $data);
+
+        $data = array(
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+
+        );
+
+        $query = $this->db->insert('users', $data);
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

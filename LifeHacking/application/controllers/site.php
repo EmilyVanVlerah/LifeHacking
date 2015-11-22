@@ -51,15 +51,51 @@ class Site extends CI_Controller {
         $this->form_validation->set_rules('username', 'username', 'required|min_length[3]|max_length[12]|trim');
         $this->form_validation->set_rules('password', 'password', 'required|min_length[2]|md5');
         $this->form_validation->set_rules('email', 'email', 'required|valid_email|trim');
-        if(!$this->form_validation->run())
+
+        if(!$this->form_validation->run() == FALSE)
         {
             $this->load->view('view_logsign');
         }
         else
         {
             $this->blog_model->register_user();
+
             $this->load->view('view_homepage');
         }
+    }
+
+    function send_confirmation() {
+
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'utf-8';
+        $config['wordwrap'] = TRUE;
+
+        $this->email->initialize($config);
+
+
+        $name = $this->input->post('name');
+        $email = $this->input->post('email');
+
+        $this->load->library('email');  	//load email library
+        $this->email->from('admin@lifehacking.com', 'Life Hacking'); //sender's email
+        $address = $email;	//receiver's email
+        $subject="Welcome to Life Hacking!";	//subject
+        $message= /*-----------email body starts-----------*/
+            'Thanks for signing up, '.$name.'!
+
+        Your email has been stored and you will be getting you newsletters.
+
+        Thank you for signing up.
+
+        Please click this link to browse Life Hacking.
+
+        ' . base_url() . 'index.php/site' ;
+        /*-----------email body ends-----------*/
+        $this->email->to($address);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->send();
     }
 
 
